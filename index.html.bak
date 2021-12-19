@@ -56,7 +56,7 @@
             <img src="./images/box-render-edited.png" id="ch-shipping-box" alt="shipping-box">
         </div>
 
-        <div id="disclaimer"><p style="text-align: center; position: relative; font-weight: 600; top: 50%; transform: translateY(-50%);">ONLY DESIGN PURPOSES - EVERYTHING SHOWED ON THIS PAGE (BRAND NAME, PRODUCT, ETC..) IS FICTIONARY</p></div>
+        <div id="disclaimer"><p style="text-align: center; position: relative; font-weight: 600; top: 50%; transform: translateY(-50%);">ONLY DESIGN PURPOSES - EVERYTHING (BRAND NAME, PRODUCT, ETC..) IS FICTIONARY</p></div>
         
 
         <script src="./js/home-stars.js"></script>
