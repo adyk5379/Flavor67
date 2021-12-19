@@ -1,0 +1,180 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/stylesheet.css">
+        <link rel="stylesheet" href="./css/reset.css">
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Readex+Pro&family=Kanit:wght@500&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="contentHolder" id="ch-main">
+            <div id="ch-main-nav">
+                <div id="main-link-holder">
+                    <p class="main-link"><a class="activeLink" href="#ch-main" id="main-link-main" onclick="changeFocusedSection('main-link-main')">HOME</a></p>
+                    <p class="main-link"><a href="#ch-flavors" id="main-link-flavors" onclick="changeFocusedSection('main-link-flavors')">FLAVORS</a></p>
+                    <p class="main-link"><a href="#ch-environment" id="main-link-environment" onclick="changeFocusedSection('main-link-environment')">ENVIRONMENT</a></p>
+                    <p class="main-link"><a href="#ch-shipping" id="main-link-shipping" onclick="changeFocusedSection('main-link-shipping')">SHIPPING</a></p>
+                </div>
+            </div>
+            <div id="ch-main-text">
+                <h1 id="ch-main-title">FLAVOR67</h1> <br>
+                <p id="ch-main-desc">Have you found the passing gum yet?</p>
+                <br>
+                <br>
+                <button class="customButton">BUY</button>
+            </div>
+            <canvas id="starHolder"></canvas>
+            <canvas id="modelHolder"></canvas>
+            <img src="./images/gumshdw.png" id="gumShadow" alt="gumshadow">
+        </div>
+        
+        <div class="contentHolder" id="ch-flavors">
+            <h1 id="ch-flavors-title">Custom Variations</h1>
+            <p id="ch-flavors-desc">We don't make the rules - you do. You can make your on flavor combinations. <br>
+            Only single flavors like apple or cherry are given, the mixture of these is up to you. <br>
+            Currently we have <span style="color: rgb(71, 124, 221)">10 fruits</span> to offer, which will be extended in the near future.</p>
+            <img src="./images/flavors-lineup.png" id="ch-flavors-choices" alt="flavor-choices">
+        </div>
+
+        <div class="contentHolder" id="ch-environment">
+            <h1 id="ch-environment-title">Environment Friendly</h1>
+            <p id="ch-environment-desc">We try to make sure to leave as less track as possible behind. <br> 
+                For us, our little friends in the wild are just as (if not more..) important as our profit. <br>
+                We're currently using <span style="color: rgb(71, 124, 221)">paper boxes</span> as the packaging for our gumgs.</p>
+            <img src="./images/tree-render-edited.png" id="ch-environment-tree" alt="environment-tree">
+
+        </div>
+
+        <div class="contentHolder" id="ch-shipping">
+            <h1 id="ch-shipping-title">Shipping</h1>
+            <p id="ch-shipping-desc">Even in this pandemic, we try to deliver the gums as fast as possible without <br> risking our worker's phyisical and mental health.
+            We're currently delivering <br> 200-300 boxes per day, which makes up a <span style="color: rgb(71, 124, 221)">delivery time of 2-3 business days</span>.</p>
+            <img src="./images/box-render-edited.png" id="ch-shipping-box" alt="shipping-box">
+        </div>
+
+        <div id="disclaimer"><p style="text-align: center; position: relative; font-weight: 600; top: 50%; transform: translateY(-50%);">ONLY DESIGN PURPOSES - EVERYTHING (BRAND NAME, PRODUCT, ETC..) IS FICTIONARY</p></div>
+        
+
+        <script src="./js/home-stars.js"></script>
+        <script type="module">
+            import * as THREE from './js/Three/build/three.module.js';
+            import { GLTFLoader } from './js/Three/examples/jsm/loaders/GLTFLoader.js';
+
+            window.onload = function() {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+                var modelCanvas = document.getElementById("modelHolder")
+                const renderer = new THREE.WebGLRenderer( { alpha: true, canvas: modelCanvas } );
+                renderer.setSize( window.innerWidth, window.innerHeight );
+
+                const geometry = new THREE.BoxGeometry();
+                const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+                const cube = new THREE.Mesh( geometry, material );
+
+                var bubbleScene = null;
+                const loader = new GLTFLoader();
+                loader.load( './models/gum.glb', function ( gltf ) {
+                    scene.add( gltf.scene );
+                    bubbleScene = gltf.scene;
+                    bubbleScene.position.x = 3;
+                    bubbleScene.position.y = 1;
+                    bubbleScene.rotation.x = 0.5;
+                    bubbleScene.rotation.z = 0.000;
+                    bubbleScene.receiveShadow = true;
+                }, undefined, function ( error ) {
+                    console.error( error );
+                } );
+                //scene.add( cube );
+
+                // Light
+                const topLight = new THREE.PointLight(0xffffff, 2)
+                topLight.position.x = 2
+                topLight.position.y = 3
+                topLight.position.z = 4
+                scene.add(topLight)
+
+                // Light
+                const bottomLight = new THREE.PointLight(0xffffff, 2)
+                bottomLight.position.x = 2
+                bottomLight.position.y = -3
+                bottomLight.position.z = 4
+                scene.add(bottomLight)
+
+
+                // Pre-Rotations
+                camera.position.z = 5;
+                cube.rotation.x += 120.0;
+
+                function animate() {
+                    requestAnimationFrame( animate );
+
+                    cube.rotation.y += 0.01;
+                    if (bubbleScene != null) {
+                        bubbleScene.rotation.y += 0.0005;
+                    }
+
+                    renderer.render( scene, camera );
+                }
+
+                animate();
+            }
+        </script>
+        <script>
+            var sections = ["main-link-main", "main-link-flavors", "main-link-environment", "main-link-shipping"];
+            var focusedSection = "main-link-main"
+            var scrolling = false;
+
+            function changeFocusedSection(section) {
+                scrolling = true;
+                var current = document.getElementById(focusedSection)
+                current.classList.remove("activeLink");
+                document.getElementById(section).classList.add("activeLink")
+                focusedSection = section
+            }
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+
+            var innerHeight = window.innerHeight / 1.2;
+            var scrollPos = 0;
+            async function updateScrollBar() {
+                while (true) {
+                    if (!scrolling) {
+                        scrollPos = window.scrollY;
+                        if (scrollPos >= 0 && scrollPos <= innerHeight) {
+                            if (focusedSection != sections[0]) {
+                                changeFocusedSection(sections[0]);
+                            }
+                        } else if (scrollPos >= innerHeight * 1 && scrollPos <= innerHeight * 2) {
+                            if (focusedSection != sections[1]) {
+                                changeFocusedSection(sections[1]);
+                            }
+                        } else if (scrollPos >= innerHeight * 2 && scrollPos <= innerHeight * 3) {
+                            if (focusedSection != sections[2]) {
+                                changeFocusedSection(sections[2]);
+                            }
+                        } else if (scrollPos >= innerHeight * 3 && scrollPos <= innerHeight * 4) {
+                            if (focusedSection != sections[3]) {
+                                changeFocusedSection(sections[3]);
+                            }
+                        }
+                    } else {
+                        await sleep(1000);
+                        scrolling = false;
+                    }
+
+                    await sleep(200);
+                }
+            }
+
+            updateScrollBar();
+        </script>
+    </body>
+</html>

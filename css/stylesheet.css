@@ -1,0 +1,315 @@
+body {
+    overflow-x: hidden;
+    height: 400vh;
+}
+
+h1::selection, h2::selection, h3::selection, h4::selection, p::selection, a::selection, br::selection, button::selection {
+    color:rgb(71, 124, 221);
+}
+
+#ch-main {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(0deg, rgb(24, 24, 24) 0%, rgba(32,26,86,1) 100%);
+}
+
+#ch-main-text {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    top: 35vh;
+    left: 18vh;
+    z-index: 2;
+}
+
+#ch-main-title {
+    font-family: "Bakbak One";
+    color: rgba(255, 255, 255);
+    font-size: 10vh;
+
+    display: inline-block;
+    z-index: inherit;
+    margin-left: -0.5vh;
+}
+
+#ch-main-desc {
+    display: inline-block;
+    font-weight: 500;
+    color: rgb(170, 170, 170);
+    position: relative;
+    font-size: 2.5vh;
+    margin-top: 0vh;
+    margin-bottom: 5vh;
+}
+
+#ch-main-nav {
+    position: fixed;
+    width: 100vw;
+    height: 7vh;
+    z-index: 2;
+}
+
+#main-link-holder {
+    width: fit-content;
+    height: inherit;
+    position: relative;
+    float: right;
+    margin-top: 5vh;
+    margin-right: 12vh;
+}
+
+.main-link a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5vh;
+    font-family: "Bakbak One";
+    font-size: 2vh;
+    height: 5vh;
+}
+
+.main-link a:hover {
+    color:rgb(71, 124, 221);
+    text-shadow: 0 0 1vh rgb(101, 114, 231);
+}
+
+.main-link {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 5vh;
+}
+
+.activeLink {
+    color: black !important;
+}
+
+.activeLink:hover {
+    color:rgb(71, 124, 221) !important;
+    text-shadow: 0 0 0vh rgb(101, 114, 231) !important;
+}
+
+.activeLink::after {
+    content: '';
+    width: 80%;
+    height: 3.5vh;
+    position: absolute;
+    top: -0.3vh;
+    left: 10%;
+    background-color: rgba(255, 255, 255, 1);
+    transform: skew(-30deg, 0deg);
+    z-index: -1;
+}
+
+#main-bubblegum {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+}
+
+#modelHolder {
+    position: absolute;
+    top: 8vh;
+    left: 5vh;
+    width: 20vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+#gumShadow {
+    position: absolute;
+    top: 58vh;
+    left: 100vh;
+}
+
+.customButton {
+	background-color:transparent;
+	border:1px solid #b4b4b4;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family: 'Kanit';
+	font-size:3vh;
+	font-weight:bold;
+	font-style:italic;
+	padding:1vh 8vh;
+	text-decoration:none;
+    z-index: 1;
+}
+
+.customButton:hover {
+	background-color:white;
+    color: black;
+}
+
+.customButton:active {
+	color:rgb(71, 124, 221);
+    position: relative;
+    top: 1px;
+}
+
+#starHolder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+}
+
+
+#ch-flavors {
+    background-color: black;
+    background: linear-gradient(180deg, rgb(24, 24, 24) 0%, rgb(92, 32, 74) 100%);
+    position: absolute;
+    top: 100vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+#ch-environment {
+    background-color: rgb(88, 88, 88);
+    position: absolute;
+    top: 200vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+#ch-shipping {
+    background-color: rgb(194, 194, 194);
+    position: absolute;
+    top: 300vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+#ch-flavors-choices {
+    position: relative;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 480px;
+    height: 390px;
+}
+
+#ch-flavors-title {
+    position: absolute;
+    left: 52%;
+    margin-top: 32vh;
+    
+
+    color: white;
+    text-decoration: none;
+    font-family: "Bakbak One";
+    font-size: 5vh;
+    height: 5vh;
+}
+
+#ch-flavors-desc {
+    position: absolute;
+    left: 52%;
+    margin-top: 42vh;
+    
+
+    color: rgb(189, 189, 189);
+    text-decoration: none;
+    font-family: "Arial";
+    font-size: 2vh;
+}
+
+#ch-environment {
+    background-color: black;
+    background: linear-gradient(0deg, rgb(24, 24, 24) 0%, rgb(92, 32, 74) 100%);
+    position: absolute;
+    top: 200vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+#ch-environment-title {
+    position: absolute;
+    left: 24%;
+    margin-top: 32vh;
+    
+
+    color: white;
+    text-decoration: none;
+    font-family: "Bakbak One";
+    font-size: 5vh;
+    height: 5vh;
+}
+
+#ch-environment-desc {
+    position: absolute;
+    left: 12%;
+    margin-top: 42vh;
+    
+
+    color: rgb(189, 189, 189);
+    text-decoration: none;
+    font-family: "Arial";
+    font-size: 2vh;
+    text-align: right;
+}
+
+#ch-environment-tree {
+    position: relative;
+    top: 43%;
+    left: 70%;
+    transform: translateY(-50%);
+    width: 232px;
+    height: 322px;
+}
+
+#ch-shipping {
+    background-color: black;
+    background: linear-gradient(180deg, rgb(24, 24, 24) 0%, rgba(32,26,86,1) 100%);
+    position: absolute;
+    top: 300vh;
+    width: 100vw;
+    height: 100vh;
+}
+
+#ch-shipping-title {
+    position: absolute;
+    left: 52%;
+    margin-top: 32vh;
+    
+
+    color: white;
+    text-decoration: none;
+    font-family: "Bakbak One";
+    font-size: 5vh;
+    height: 5vh;
+}
+
+#ch-shipping-desc {
+    position: absolute;
+    left: 52%;
+    margin-top: 42vh;
+    
+
+    color: rgb(189, 189, 189);
+    text-decoration: none;
+    font-family: "Arial";
+    font-size: 2vh;
+}
+
+#ch-shipping-box {
+    position: relative;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    width: 480px;
+    height: 390px;
+}
+
+#disclaimer {
+    position: absolute;
+    top: 400vh;
+    width: 100vw;
+    height: 5vh;
+    background-color: rgb(37, 37, 37);
+    color: rgb(189, 189, 189);
+}
